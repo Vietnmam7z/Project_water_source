@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://images.pexels.com/photos/6985001/pexels-photo-6985001.jpeg?_gl=1*v9s8qm*_ga*ODc3NzIwNzI3LjE3NTU3Nzc5NjM.*_ga_8JE65Q40S6*czE3NTU3Nzc5NjMkbzEkZzEkdDE3NTU3NzgxMDQkajQ1JGwwJGgw');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.center-button {
+    padding: 25px 80px;
+    font-size: 24px;
+    background-color: white; /* mặc định trắng */
+    color: black;
+    border: 2px solid rgba(0, 123, 255, 0.85);
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.center-button:hover {
+    color: rgba(0, 123, 255, 1); /* chữ xanh đậm */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.center-button.active {
+    background-color: rgba(0, 123, 255, 0.85);
+    color: white;
+}
+
+.center-button.active:hover {
+    background-color: rgba(0, 105, 230, 0.95); /* xanh đậm hơn */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.sensor-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sensor-box {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.temperature-box {
+    background-color: #e74c3c;
+}
+
+.humidity-box {
+    background-color: #3498db;
+}
+
+@media (max-width: 600px) {
+    .sensor-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .sensor-box {
+        width: 120px;
+        height: 120px;
+        font-size: 18px;
+    }
+
+    .center-button {
+        padding: 18px 50px;
+        font-size: 20px;
+    }
+
+    .main-container {
+        gap: 20px;
+        margin-top: 30px;
+    }
+}

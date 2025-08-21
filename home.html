@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>ESP32 Mini Web</title>
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="main-container">
+        <div class="sensor-container">
+            <div class="sensor-box temperature-box">
+                <p>Nhiệt độ</p>
+                <span id="temperatureValue">--</span> °C
+            </div>
+            <div class="sensor-box humidity-box">
+                <p>Độ ẩm</p>
+                <span id="humidityValue">--</span> %
+            </div>
+        </div>
+
+        <button class="center-button" id="wateringBtn">Tưới nước</button>
+    </div>
+</body>
+</html>
