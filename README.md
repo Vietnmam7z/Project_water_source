@@ -5,7 +5,10 @@
 ---
 
 ## **Mục lục**
-**[I. Linh kiện cần thiết](#i-linh-kiện-cần-thiết)** | **[II. Sơ đồ và cấu trúc](#ii-sơ-đồ-và-cấu-trúc)** | **[III. Hướng dẫn cài đặt & sử dụng](#iii-hướng-dẫn-cài-đặt--sử-dụng)** | **[IV. Tổng kết dự án](#iv-tổng-kết-dự-án)**
+* **[I. Linh kiện cần thiết](#i-linh-kiện-cần-thiết)**
+* **[II. Sơ đồ và cấu trúc](#ii-sơ-đồ-và-cấu-trúc)**
+* **[III. Hướng dẫn cài đặt & sử dụng](#iii-hướng-dẫn-cài-đặt--sử-dụng)**
+* **[IV. Tổng kết dự án](#iv-tổng-kết-dự-án)**
 ---
 
 ## **I. Linh kiện cần thiết**
@@ -21,27 +24,27 @@
 
 * Đây là thiết bị chính, có nhiệm vụ đóng/mở nguồn nước. Van hoạt động dựa trên nguyên lý từ trường: khi được cấp điện, nam châm điện sẽ mở van và van sẽ tự động đóng lại khi ngắt điện, giúp tránh lãng phí nước nếu có sự cố về điện.
 * Thị trường có nhiều loại van đa dạng về kích thước ống, tính năng (mở thủ công, điều chỉnh lưu lượng), và giá thành.
-* <span style="color:red">**Lưu ý:** Dự án này sử dụng van điện một chiều (DC). Khi mua, cần chọn đúng loại van (DC) và đúng hiệu điện thế để lựa chọn adapter nguồn tương thích.</span>
+> **Lưu ý:** Dự án này sử dụng van điện một chiều (DC). Khi mua, cần chọn đúng loại van (DC) và đúng hiệu điện thế để lựa chọn adapter nguồn tương thích.
 
 ### **3. Module Relay (1 mạch)**
 <img src="https://github.com/user-attachments/assets/84ff37b7-8ea2-4191-949d-e66b278cbac7" width="400" />
 
 * Do ESP32 không thể trực tiếp điều khiển các thiết bị có điện áp cao như van điện từ, module relay được sử dụng làm cầu nối.
 * Module này nhận tín hiệu điều khiển từ ESP32 để kích hoạt công tắc (khóa K), cho phép dòng điện từ adapter cấp cho van điện từ.
-* <span style="color:red">**Lưu ý:** Cần chọn module relay có điện áp kích hoạt tương thích với mức logic của ESP32 (thường là 3.3V hoặc 5V) và phù hợp với adapter cấp nguồn cho nó.</span>
+> **Lưu ý:** Cần chọn module relay có điện áp kích hoạt tương thích với mức logic của ESP32 (thường là 3.3V hoặc 5V) và phù hợp với adapter cấp nguồn cho nó
 
 ### **4. Cảm biến nhiệt độ - độ ẩm (1 cái) (Tùy chọn)**
 <img src="https://github.com/user-attachments/assets/88fa0cbc-9f71-4935-a0bd-8552d7eb014e" width="400" />
 
 * Là cảm biến phổ biến trong các lĩnh vực nông nghiệp, nhà thông minh, khí tượng,... với ưu điểm giá rẻ, dễ lập trình và sử dụng.
-* Trong phạm vi dự án này, cảm biến chưa được khai thác nhiều nhưng là một hướng phát triển tiềm năng (xem mục IV).
+* Trong phạm vi dự án này, cảm biến chưa được khai thác nhiều nhưng là một hướng phát triển tiềm năng (xem [mục IV](#iv-tổng-kết-dự-án)).
 
 ### **5. Nút nhấn (1 cái)**
 <img src="https://github.com/user-attachments/assets/30d51312-c092-4492-8739-1e28841de021" width="400" />
 
 * Là thiết bị đầu vào đơn giản và đa dụng. Trong dự án này, nút nhấn đóng vai trò là một phương thức điều khiển dự phòng.
 * Có thể phát triển thêm các chức năng như nhấn giữ, nhấn đúp để thực hiện các tác vụ khác nhau.
-* <span style="color:red">**Lưu ý:** Cần tối thiểu 1 nút nhấn. Đây là cơ chế an toàn, cho phép người dùng bật/tắt van thủ công trong trường hợp mạng Wi-Fi yếu hoặc web server không thể truy cập.</span>
+> **Lưu ý:** Cần tối thiểu 1 nút nhấn. Đây là cơ chế an toàn, cho phép người dùng bật/tắt van thủ công trong trường hợp mạng Wi-Fi yếu hoặc web server không thể truy cập.
 
 ### **6. Adapter nguồn (2 cái)**
 <img src="https://github.com/user-attachments/assets/f65c5eb6-4cac-46bc-826a-004de2d1c698" width="400" />
@@ -64,7 +67,7 @@
 ### **9. Thiết bị hỗ trợ (Tùy chọn)**
 * Đồng hồ vạn năng.
 
-<span style="color:red">**P/S:** Cấu hình tham khảo cho dự án này (ưu tiên chi phí thấp): Van điện từ 24VDC (ống 13mm), Module relay 5V, Cảm biến DHT11. Nếu bạn sử dụng linh kiện khác (đặc biệt là cảm biến), cần phải điều chỉnh lại code cho phù hợp.</span>
+<span style="color:red">**P/S:** Cấu hình tham khảo cho dự án này (ưu tiên chi phí thấp): Van điện từ 24VDC (ống 13mm), Module relay 5V, Cảm biến DHT11. Nếu bạn sử dụng linh kiện khác (đặc biệt là cảm biến), cần phải điều chỉnh lại code cho phù hợp. Đối với cảm biến DHT11 cần thay đổi trong file `config.py` dòng `sensor = dht.DHT11(Pin(26))` và có thể là toàn bộ file `dh11.py`.
 
 ---
 
@@ -84,7 +87,7 @@
     * Chân tín hiệu (DATA) của **nút nhấn** nối vào cổng **GPIO 27**.
     * Chân tín hiệu (DATA) của **cảm biến DHT11** nối vào cổng **GPIO 26**.
     * Chân tín hiệu (IN) của **module relay** nối vào cổng **GPIO 32**.
-* <span style="color:red">**Lưu ý:** Tên chân tín hiệu có thể khác nhau tùy loại linh kiện (ví dụ: IN, OUT, S,...). Luôn tham khảo datasheet của linh kiện nếu không chắc chắn.</span>
+> **Lưu ý:** Tên chân tín hiệu có thể khác nhau tùy loại linh kiện (ví dụ: IN, OUT, S,...). Luôn tham khảo datasheet của linh kiện nếu không chắc chắn.
 
 ---
 
@@ -93,7 +96,7 @@
 ### **1. Phần mềm**
 Dự án sử dụng ngôn ngữ **MicroPython** và được lập trình bằng phần mềm **Thonny IDE** vì tính trực quan và tốc độ phát triển nhanh.
 * **Link tải Thonny:** [https://thonny.org](https://thonny.org)
-* <span style="color:red">**Lưu ý:** Không phải vi điều khiển nào cũng hỗ trợ MicroPython. Mặc định, ESP32 chưa có sẵn firmware MicroPython, bạn cần phải nạp firmware trước khi sử dụng. Có rất nhiều hướng dẫn chi tiết trên Internet về cách thực hiện việc này.</span>
+> **Lưu ý:** Không phải vi điều khiển nào cũng hỗ trợ MicroPython. Mặc định, ESP32 chưa có sẵn firmware MicroPython, bạn cần phải nạp firmware trước khi sử dụng. Có rất nhiều hướng dẫn chi tiết trên Internet về cách thực hiện việc này.
 
 ### **2. Các bước chạy chương trình**
 1.  **Kết nối linh kiện:** Lắp ráp mạch theo sơ đồ ở mục II.
@@ -105,10 +108,10 @@ Dự án sử dụng ngôn ngữ **MicroPython** và được lập trình bằn
     `✅ Đã kết nối Wi-Fi. IP: x.x.x.x`
     Sử dụng địa chỉ IP (`x.x.x.x`) này trên trình duyệt của một thiết bị (máy tính, điện thoại) đang kết nối cùng mạng Wi-Fi để truy cập vào trang điều khiển.
 
-<span style="color:red">**Lưu ý:**</span>
-* <span style="color:red">Nếu không thấy dòng thông báo "✅ Đã kết nối Wi-Fi...", hãy kiểm tra lại tên và mật khẩu Wi-Fi trong file `config.py`.</span>
-* <span style="color:red">Đây là web server nội bộ (LAN), chỉ có thể truy cập từ các thiết bị trong cùng một mạng.</span>
-* <span style="color:red">Địa chỉ IP của ESP32 có thể thay đổi mỗi khi kết nối lại với một mạng Wi-Fi khác.</span>
+> **Lưu ý:**</span>
+* <span style="color:red">Nếu không thấy dòng thông báo "✅ Đã kết nối Wi-Fi...", hãy kiểm tra lại tên và mật khẩu Wi-Fi trong file `config.py`.
+* <span style="color:red">Đây là web server nội bộ (LAN), chỉ có thể truy cập từ các thiết bị trong cùng một mạng.
+* <span style="color:red">Địa chỉ IP của ESP32 có thể thay đổi mỗi khi kết nối lại với một mạng Wi-Fi khác.
 
 ---
 
